@@ -31,7 +31,7 @@ public class Main {
             System.out.print(el + " ");
         }
 
-        //c) 2c (sort and count clusters)
+        //c)
         System.out.print("Enter how many numbers you want to enter: ");
         int m3 = sc.nextInt();
         int[] arr3 = new int[m3];
@@ -65,38 +65,34 @@ public class Main {
         }
         System.out.println(clustersCount);
 
-        //d) 2d(1, 2, 8; sum of array – sum of left; stop before first index)
+        //d)
         System.out.print("Enter how many numbers you want to enter: ");
         int m4 = sc.nextInt();
         int[] arr4 = new int[m4];
         System.out.print("Enter the numbers: ");
+        int sumArray = 0;
         for (int i = 0; i < arr4.length; i++) {
             arr4[i] = sc.nextInt();
+            sumArray += arr4[i];
         }
         int sumLeft = 0;
         int sumRight;
         int index = -1;
         for (int i = 0; i < arr4.length; i++) {
             sumLeft += arr4[i];
-            sumRight = 0;
-
-            for (int j = arr4.length - 1; j >= 0; j--) {
-                sumRight += arr4[j];
-                if (i > 0 && j < arr4.length - 1) {
-                    if (sumLeft == sumRight) {
-                        index = i;
-                        break;
-                    }
-                }
-            }
-            if (index != -1) {
-                System.out.println(index);
+            sumRight = sumArray - sumLeft;
+            if (sumLeft == sumRight) {
+                index = i;
                 break;
             }
         }
+
         if (index == -1) {
             System.out.println("NO");
+        } else {
+            System.out.println(index);
         }
+
         //e)
         System.out.print("Enter how many numbers you want to enter: ");
         int m5 = sc.nextInt();
