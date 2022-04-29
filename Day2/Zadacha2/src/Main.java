@@ -151,7 +151,7 @@ public class Main {
             System.out.print(arr6[i] + " ");
         }
 
-        //h) (sort, count and count % 2 != 0)
+        //h)
         System.out.print("Enter how many numbers you want to enter: ");
         int m7 = sc.nextInt();
         int[] arr7 = new int[m7];
@@ -159,28 +159,20 @@ public class Main {
         for (int i = 0; i < arr7.length; i++) {
             arr7[i] = sc.nextInt();
         }
+        Arrays.sort(arr7);
+        int lonelyNumber = 0;
+        int count = 0;
 
-        int number = 0;
-        int count2 = 0;
-
-        for (int i = 0; i < arr7.length; i++) {
-            for (int j = i + 1; j < arr7.length; j++) {
-
-                if (arr7[i] == arr7[j]) {
-                    number = arr7[i];
-                    count2++;
-                } else {
-                    count2 = 0;
-                }
-            }
-            count2++;
-            if (count2 == 1) {
-                System.out.println(number);
-                break;
+        for (int i = 1; i < arr7.length; i++) {
+            if (arr7[i] == arr7[i - 1]) {
+                count++;
             } else {
-                count2 = 0;
+                count = 0;
+            }
+            if (count % 2 != 0) {
+                lonelyNumber = arr7[i];
             }
         }
-
+        System.out.println(lonelyNumber);
     }
 }
