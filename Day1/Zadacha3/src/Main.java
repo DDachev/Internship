@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // print square
+        //a) print square
         System.out.print("Enter size of square: ");
         int input = sc.nextInt();
         for (int i = 0; i < input; i++) {
@@ -20,7 +20,7 @@ public class Main {
             System.out.println();
         }
 
-        // print Z
+        //b) print Z
         System.out.print("Enter size of Z: ");
         int input2 = sc.nextInt();
         for (int i = 0; i < input2; i++) {
@@ -49,14 +49,16 @@ public class Main {
                 for (int k = 0; k <= row; k++) {
                     System.out.print("*");
                 }
-
                 System.out.println();
             }
-            if (i == input3 - 1) {
-                System.out.println("*");
-                System.out.println("***");
-                break;
-            }
         }
+        for (int i = 0; i < row / 2 + 1; i++) {
+            System.out.print(" ");
+        }
+        System.out.print("*\n");
+        for (int i = 0; i < row / 2; i++) {
+            System.out.print(" ");
+        }
+        System.out.print("***");
     }
 }

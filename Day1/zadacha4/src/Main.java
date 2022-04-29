@@ -5,7 +5,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         //a)
-        System.out.print("Enter a sentence: ");
+    /*    System.out.print("Enter a sentence: ");
         String input = sc.nextLine();
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < input.length(); i++) {
@@ -28,32 +28,17 @@ public class Main {
                 count++;
             }
         }
-        System.out.println(count);
+        System.out.println(count);*/
 
-        //c)
+        //c) check if there are . ? !
         System.out.print("Enter a sentence: ");
         String input3 = sc.nextLine();
-
-
-        String[] sentences = input3.split("\\.");
-        
-        if (sentences.length > 1) {
-            for (String sentence : sentences) {
-                System.out.println(sentence);
-            }
-        }
-
-        String[] sentences2 = input3.split("\\?");
-        if (sentences2.length > 1) {
-            for (String sentence : sentences2) {
-                System.out.println(sentence);
-            }
-        }
-
-        String[] sentences3 = input3.split("\\!");
-        if (sentences3.length > 1) {
-            for (String sentence : sentences3) {
-                System.out.println(sentence);
+        StringBuilder sentence = new StringBuilder();
+        for (int i=0; i<input3.length(); i++) {
+            sentence.append(input3.charAt(i));
+            if (input3.charAt(i) == '.' || input3.charAt(i) == '?' || input3.charAt(i) == '!') {
+                System.out.println(sentence.toString().trim());
+                sentence.delete(0, sentence.length());
             }
         }
 

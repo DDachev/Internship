@@ -11,21 +11,9 @@ public class Main {
         char result = stringNumber.charAt(0);
         System.out.println(result);
 
-        // second way with loop
-        System.out.print("Enter a number: ");
-        int number2 = sc.nextInt();
-        String stringNumber2 = String.valueOf(number2);
-
-        int k = 0;
-        do {
-            char result2 = stringNumber2.charAt(k);
-            System.out.println(result2);
-            break;
-        } while (k < stringNumber2.length());
-
 
         //b)
-        System.out.print("Enter a number: ");
+       /* System.out.print("Enter a number: ");
         int number3 = sc.nextInt();
         String stringNumber3 = String.valueOf(number3);
         StringBuilder result3 = new StringBuilder(stringNumber3);
@@ -88,6 +76,7 @@ public class Main {
         }
 
         //e)
+
         // method that checks if a number is prime
         System.out.print("Enter a number: ");
         int number10 = sc.nextInt();
@@ -97,13 +86,12 @@ public class Main {
                 count++;
             }
         }
-        System.out.println(count==2);
-
+        System.out.println(count == 2);
 
         //f)
         System.out.print("Enter a number: ");
         int number11 = sc.nextInt();
         System.out.println(Integer.toBinaryString(number11));
-        System.out.println(Integer.toHexString(number11));
+        System.out.println(Integer.toHexString(number11));*/
     }
 }

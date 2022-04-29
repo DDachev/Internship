@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be42ceb2-9796-4a03-8c00-45bc508825fe" name="Changes" comment="Task 3">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Zadacha1/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Zadacha1/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Zadacha1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Zadacha1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Zadacha1/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Zadacha1/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zadacha4/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../zadacha4/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zadacha4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../zadacha4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zadacha4/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../zadacha4/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day2/Zadacha2/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Day2/Zadacha2/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +24,7 @@
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

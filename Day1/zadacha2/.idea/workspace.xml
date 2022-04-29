@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d31160b9-699a-4837-b931-6e57c3d84f75" name="Changes" comment="Task 2 full" />
+    <list default="true" id="d31160b9-699a-4837-b931-6e57c3d84f75" name="Changes" comment="Task 2 full">
+      <change beforePath="$PROJECT_DIR$/../Zadacha1/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Zadacha1/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Zadacha1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Zadacha1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Zadacha1/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Zadacha1/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Zadacha3/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Zadacha3/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Zadacha3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Zadacha3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Zadacha3/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Zadacha3/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zadacha4/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../zadacha4/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zadacha4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../zadacha4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zadacha4/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../zadacha4/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Day2/Zadacha2/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Day2/Zadacha2/src/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,7 +27,7 @@
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

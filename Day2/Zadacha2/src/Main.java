@@ -31,7 +31,7 @@ public class Main {
             System.out.print(el + " ");
         }
 
-        //c)
+        //c) 2c(sort and count clusters)
         System.out.print("Enter how many numbers you want to enter: ");
         int m3 = sc.nextInt();
         int[] arr3 = new int[m3];
@@ -56,7 +56,7 @@ public class Main {
         String[] result = clusters.toString().split("\\s");
         System.out.println(result.length);
 
-        //d)
+        //d) 2d(1, 2, 8; sum of array – sum of left; stop before first index)
         System.out.print("Enter how many numbers you want to enter: ");
         int m4 = sc.nextInt();
         int[] arr4 = new int[m4];
@@ -146,7 +146,7 @@ public class Main {
             System.out.print(arr6[i] + " ");
         }
 
-        //h)
+        //h) (sort, count and count % 2 != 0)
         System.out.print("Enter how many numbers you want to enter: ");
         int m7 = sc.nextInt();
         int[] arr7 = new int[m7];
