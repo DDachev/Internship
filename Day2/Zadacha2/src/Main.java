@@ -31,7 +31,7 @@ public class Main {
             System.out.print(el + " ");
         }
 
-        //c) 2c(sort and count clusters)
+        //c) 2c (sort and count clusters)
         System.out.print("Enter how many numbers you want to enter: ");
         int m3 = sc.nextInt();
         int[] arr3 = new int[m3];
@@ -40,21 +40,30 @@ public class Main {
             arr3[i] = sc.nextInt();
         }
         StringBuilder clusters = new StringBuilder();
+        Arrays.sort(arr3);
 
-        for (int i = 0; i < arr3.length; i++) {
-            for (int j = i + 1; j < arr3.length; j++) {
-                if (arr3[i] == arr3[j]) {
-                    clusters.append(arr3[j]).append(" ");
-                    break;
-                }
+        for (int i = 1; i < arr3.length; i++) {
+            if (arr3[i] == arr3[i - 1]) {
+                clusters.append(arr3[i - 1]).append(" ");
+                clusters.append(arr3[i]).append(" ");
+            }
+        }
 
-                if (arr3[i] != arr3[j]) {
+        String[] resultArr = clusters.toString().split("\\s");
+        System.out.println(Arrays.toString(resultArr));
+        int clustersCount = 0;
+        for (int i = 0; i < resultArr.length; i++) {
+            int j;
+            for (j = 0; j < i; j++) {
+                if (Integer.parseInt(resultArr[i]) == Integer.parseInt(resultArr[j])) {
                     break;
                 }
             }
+            if (i == j) {
+                clustersCount++;
+            }
         }
-        String[] result = clusters.toString().split("\\s");
-        System.out.println(result.length);
+        System.out.println(clustersCount);
 
         //d) 2d(1, 2, 8; sum of array – sum of left; stop before first index)
         System.out.print("Enter how many numbers you want to enter: ");
@@ -156,24 +165,24 @@ public class Main {
         }
 
         int number = 0;
-        int count = 0;
+        int count2 = 0;
 
         for (int i = 0; i < arr7.length; i++) {
             for (int j = i + 1; j < arr7.length; j++) {
 
                 if (arr7[i] == arr7[j]) {
                     number = arr7[i];
-                    count++;
+                    count2++;
                 } else {
-                    count = 0;
+                    count2 = 0;
                 }
             }
-            count++;
-            if (count == 1) {
+            count2++;
+            if (count2 == 1) {
                 System.out.println(number);
                 break;
             } else {
-                count = 0;
+                count2 = 0;
             }
         }
 
