@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter how many numbers you want to enter and which number to look for: ");
+        System.out.print("Enter how many numbers you want to enter and length of the sequence: ");
         int[] input = new int[2];
 
         for (int i = 0; i < input.length; i++) {
@@ -20,23 +20,29 @@ public class Main {
             arr2[i] = sc.nextInt();
         }
         int sum = 0;
-        int maxSum = 0;
+        int highestSum = 0;
         StringBuilder result = new StringBuilder();
+
+        //find the longest increasing subsequence with highest sum
         for (int i = 0; i < arr2.length; i++) {
-            for (int j = i; j < K; j++) {
+            for (int j = i; j < i + K; j++) {
+                if (i + K > arr2.length) {
+                    break;
+                }
                 sum += arr2[j];
-                result.append(arr2[j]).append(" ");
-            }
-            if (sum > maxSum) {
-                maxSum = sum;
-                sum = 0;
-                result.delete(0, result.length());
-            } else {
-                sum = 0;
             }
 
+            if (sum > highestSum) {
+                highestSum = sum;
+                result.setLength(0);
+                for (int k = i; k < i+K; k++) {
+                    result.append(arr2[k]).append(" ");
+                }
+            }
+            sum = 0;
         }
-        System.out.println("The maximum sum is: " + maxSum);
+
+        System.out.println("The maximum sum is: " + highestSum);
         System.out.println("The sequence is: " + result);
     }
 }

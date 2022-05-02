@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -15,5 +16,10 @@ public class Main {
             }
         }
         System.out.println("Max number: " + max);
+
+        //second way
+        Arrays.sort(arr);
+        int max2 = arr[arr.length - 1];
+        System.out.println("Max number: " + max2);
     }
 }

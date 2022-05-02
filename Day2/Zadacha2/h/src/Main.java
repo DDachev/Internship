@@ -18,18 +18,19 @@ public class Main {
         int lonelyNumber = 0;
         int count = 0;
 
-        for (int i = 1; i < arr.length; i++) {
-
-            if (arr[i] == arr[i - 1]) {
-                count++;
-            } else {
-                count = 0;
+        for (int i : arr) {
+            for (int j : arr) {
+                if (i == j) {
+                    count++;
+                }
             }
-
             if (count % 2 != 0) {
-                lonelyNumber = arr[i];
+                lonelyNumber = i;
             }
+            count = 0;
         }
         System.out.println(lonelyNumber);
     }
 }
+
+
