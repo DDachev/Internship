@@ -23,7 +23,7 @@ public class Main {
         int highestSum = 0;
         StringBuilder result = new StringBuilder();
 
-        //find the longest increasing subsequence with highest sum
+
         for (int i = 0; i < arr2.length; i++) {
             for (int j = i; j < i + K; j++) {
                 if (i + K > arr2.length) {
