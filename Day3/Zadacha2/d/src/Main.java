@@ -1,11 +1,16 @@
 import java.util.Scanner;
-
+import java.util.Stack;
 public class Main {
     public static void main(String[] args) {
         System.out.print("Enter a string: ");
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
-        System.out.println(isBalanced(input));
+
+        if (!isBalanced(input)) {
+            System.out.println("false");
+        } else {
+            System.out.println(validParentheses(input));
+        }
     }
 
     public static boolean isBalanced(String input) {
@@ -28,13 +33,23 @@ public class Main {
                 case ']' -> closedSquareBrackets++;
             }
         }
-        System.out.println("openRoundedBrackets: " + openRoundedBrackets);
-        System.out.println("closedRoundedBrackets: " + closedRoundedBrackets);
-        System.out.println("openCurlyBrackets: " + openCurlyBrackets);
-        System.out.println("closedCurlyBrackets: " + closedCurlyBrackets);
-        System.out.println("openSquareBrackets: " + openSquareBrackets);
-        System.out.println("closedSquareBrackets: " + closedSquareBrackets);
 
-        return openCurlyBrackets == closedCurlyBrackets && openSquareBrackets == closedSquareBrackets && openRoundedBrackets == closedRoundedBrackets;
+        return openCurlyBrackets == closedCurlyBrackets && openSquareBrackets == closedSquareBrackets &&
+                openRoundedBrackets == closedRoundedBrackets;
+    }
+
+    public static boolean validParentheses(String input) {
+        Stack<Character> stack = new Stack<>();
+        for (char c : input.toCharArray()) {
+            if (c == '(')
+                stack.push(')');
+            else if (c == '{')
+                stack.push('}');
+            else if (c == '[')
+                stack.push(']');
+            else if (stack.isEmpty() || stack.pop() != c)
+                return false;
+        }
+        return stack.isEmpty();
     }
 }

@@ -2,9 +2,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
-        System.out.print("Enter a string: ");
         Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");
         String input = sc.nextLine();
         System.out.println(isPalindrome(input));
     }

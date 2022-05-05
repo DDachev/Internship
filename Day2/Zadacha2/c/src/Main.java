@@ -21,9 +21,7 @@ public class Main {
                 clusters.append(arr[i]).append(" ");
             }
         }
-
         String[] resultArr = clusters.toString().split("\\s");
-        System.out.println(Arrays.toString(resultArr));
         int clustersCount = 0;
         for (int i = 0; i < resultArr.length; i++) {
             int j;
