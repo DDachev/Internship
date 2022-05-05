@@ -9,7 +9,7 @@ public class Vehicle {
     private final int distance;
     private final String licenseNo;
     private double weight;
-    private final String color;
+    private String color = "N/A";
 
 
     public Vehicle(String type, String model, double power, double fuelConsumption, int yearProduced, int distance, String licenseNo) {
@@ -20,7 +20,6 @@ public class Vehicle {
         this.yearProduced = yearProduced;
         this.distance = distance;
         this.licenseNo = licenseNo;
-        this.color = "N/A";
     }
 
     public Vehicle(String type, String model, double power, double fuelConsumption, int yearProduced, int distance, String licenseNo, String color) {
@@ -43,7 +42,6 @@ public class Vehicle {
         this.distance = distance;
         this.licenseNo = licenseNo;
         this.weight = weight;
-        this.color = "N/A";
     }
 
     public Vehicle(String type, String model, double power, double fuelConsumption, int yearProduced, int distance, String licenseNo, double weight, String color) {
