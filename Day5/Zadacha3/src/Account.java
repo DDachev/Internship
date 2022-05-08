@@ -1,4 +1,4 @@
-public class Account {
+public class Account extends Bank {
     private final String username;
     private final String password;
     private final String name;
@@ -12,19 +12,29 @@ public class Account {
         this.password = password;
         this.name = name;
         this.govId = govId;
+        this.credentials = new Credentials(username, password);
     }
 
-    public void deposit(double amount) {
-        balance += amount;
+    public boolean deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            return true;
+        }
+        return false;
     }
 
-    public void withdraw(double amount) {
-        balance -= amount;
+    public boolean withdraw(double amount) {
+        if (amount > 0) {
+            if (balance - amount >= 0) {
+                balance -= amount;
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean hasAccess(String password) {
-        //TODO: implement
-        return false;
+        return credentials.authCheck(password);
     }
 
     public double getBalance() {
@@ -35,12 +45,8 @@ public class Account {
         return this.name;
     }
 
-    public String getGovId() {
-        return govId;
+    @Override
+    public String toString() {
+        return name + ", " + govId + ", " + String.format("%.2f", balance);
     }
-
-    public String getName() {
-        return name;
-    }
-
 }
