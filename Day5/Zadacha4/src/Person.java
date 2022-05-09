@@ -1,9 +1,3 @@
-// Sample input:
-// gosho=30;pesho=15; etc. name=moneyInPocket
-// cocaine=100;car=10; etc. product=price
-// gosho cocaine; pesho car; etc. nameOfBuyer productName
-// end
-
 import java.util.ArrayList;
 import java.util.List;
 
