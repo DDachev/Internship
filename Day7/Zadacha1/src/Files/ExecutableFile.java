@@ -8,11 +8,20 @@ import java.util.List;
 
 public class ExecutableFile extends File {
     private String lastExecutionDateString;
-    List<File> requiredResources = new ArrayList<>();
+    List<String> requiredResources = new ArrayList<>();
 
-    public ExecutableFile(String name, String location, File... resource) {
+    public ExecutableFile(String name, String location, String... resource) {
         super(name, location);
         requiredResources.addAll(Arrays.asList(resource));
+    }
+
+    public File copy(String newLocation) {
+        File newFile = new ExecutableFile(this.name, this.location);
+        newFile.name = this.name;
+        newFile.location = newLocation;
+        newFile.creationDateString = this.creationDateString;
+        newFile.isDeleted = this.isDeleted;
+        return newFile;
     }
 
     private String setLastExecutionDate() {
@@ -37,12 +46,10 @@ public class ExecutableFile extends File {
 
     @Override
     public void execute() {
-        System.out.println("Executing "+ location+"/"+name);
-        for (File fl : requiredResources){
-
-            if(!fl.isDeleted){
-                fl.execute();
-            }
+        System.out.println("Executing " + location + "/" + name);
+        List<File> resources = new ArrayList<>();
+        for (String fileName : requiredResources) {
+            //TODO: implement
         }
 
         lastExecutionDateString = setLastExecutionDate();

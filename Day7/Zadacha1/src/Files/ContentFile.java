@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ContentFile extends File {
-    private String content;
+    String content;
     String lastModifiedDateString;
 
     public ContentFile(String name, String location, String content) {
@@ -13,6 +13,16 @@ public class ContentFile extends File {
         lastModifiedDateString = setLastModifiedDate();
     }
 
+    @Override
+    public  File copy(String newLocation) {
+        ContentFile newFile = new ContentFile(this.name, this.location, this.content);
+        newFile.name = this.name;
+        newFile.location = newLocation;
+        newFile.content = this.content;
+        newFile.creationDateString = this.creationDateString;
+        newFile.isDeleted = this.isDeleted;
+        return newFile;
+    }
     private String setLastModifiedDate() {
         LocalDateTime lastModifiedDate = LocalDateTime.now();
         DateTimeFormatter myDateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -20,6 +30,9 @@ public class ContentFile extends File {
         return lastModifiedDateString;
     }
 
+    public String getContent() {
+        return content;
+    }
     @Override
     public void modify(String newContent) {
         content = newContent;

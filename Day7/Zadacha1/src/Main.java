@@ -6,8 +6,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // System.out.println("\u266B");
-        // System.out.println("\u2713");
 
         List<File> directory = new ArrayList<>();
         getCommands(sc, directory);
@@ -35,7 +33,8 @@ public class Main {
                             }
                         }
                     } else {
-                        File[] resources = new File[userInput.length - 3];
+
+                        String[] resources = new String[userInput.length - 3];
                         System.arraycopy(userInput, 3, resources, 0, userInput.length - 3);
                         newFile = new ExecutableFile(fileName, fileLocation, resources);
                     }
@@ -77,7 +76,16 @@ public class Main {
                     }
                 }
                 case "EXEC" -> {
-                    //TODO implement 4
+                    for(File file : directory) {
+                        if(file instanceof ExecutableFile) {
+                            ((ExecutableFile) file).execute();
+                        } else if(file instanceof MediaContentFile) {
+                            System.out.println("♫♫♫ " + ((MediaContentFile) file).getContent());
+                        }
+                        else if(file instanceof DocumentContentFile) {
+                            System.out.println("✓✓✓ " + ((DocumentContentFile) file).getContent());
+                        }
+                    }
                 }
                 case "INFO" -> {
                     for (File file : directory) {

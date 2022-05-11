@@ -3,7 +3,7 @@ package Files;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class File {
+public abstract class File {
     String name;
     String location;
     boolean isDeleted;
@@ -26,14 +26,7 @@ public class File {
         this.location = newLocation;
     }
 
-    public File copy(String newLocation) {
-        File newFile = new File(this.name, this.location);
-        newFile.name = this.name;
-        newFile.location = newLocation;
-        newFile.creationDateString = this.creationDateString;
-        newFile.isDeleted = this.isDeleted;
-        return newFile;
-    }
+    public abstract File copy(String newLocation);
 
     public void delete() {
         isDeleted = true;
@@ -41,9 +34,6 @@ public class File {
 
     public boolean getIsDeleted() {
         return isDeleted;
-    }
-
-    protected void executeFile() {
     }
 
     public String getInfo() {
