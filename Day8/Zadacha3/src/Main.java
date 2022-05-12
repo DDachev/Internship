@@ -1,17 +1,19 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        ArrayList<Credentials> credentialsList = new ArrayList<>();
+        List<Credentials> credentialsList = new ArrayList<>();
         String username, password;
         String newPassword = null;
         String[] command = sc.nextLine().trim().split("\\s");
         while (!command[0].equalsIgnoreCase("END")) {
             username = command[1];
             password = command[2];
+
             if (command[0].equalsIgnoreCase("CHPASS") && command[3] != null) {
                 newPassword = command[3];
             }
@@ -24,10 +26,15 @@ public class Main {
                 case "CHPASS":
                     for (Credentials credential : credentialsList) {
                         if (credential.getUsername().equals(username)) {
-                            credential.changePassword(newPassword, password);
+                            try {
+                                credential.changePassword(newPassword, password);
+                            } catch (OldPasswordConflictException e) {
+                                throw new RuntimeException(e);
+                            }
                         }
                     }
                     break;
+
                 case "AUTH":
                     for (Credentials credential : credentialsList) {
                         if (credential.getUsername().equals(username)) {
@@ -37,8 +44,6 @@ public class Main {
                     break;
             }
             command = sc.nextLine().split("\\s");
-
         }
-
     }
 }
