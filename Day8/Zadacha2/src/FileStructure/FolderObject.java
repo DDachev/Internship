@@ -1,25 +1,41 @@
 package FileStructure;
 
+import FileStructure.Utility.PathFolderManipulator;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class FolderObject extends FileSystemObject {
     private List<FileSystemObject> children = new ArrayList<>();
 
-    public FolderObject(String name, String path) {
-        super(name, path);
+    public FolderObject(String name) {
+        super(name);
     }
 
-    private static String extractParentFolder(String path) {
-
-        int lastSlash = path.lastIndexOf("/");
-        if (lastSlash == -1) {
-            return "";
-        }
-        int secondLastSlash = path.lastIndexOf("/", lastSlash - 1);
-        if (secondLastSlash == -1) {
-            return "";
-        }
-        return path.substring(secondLastSlash + 1, lastSlash);
+    public FolderObject(String name, String parent) {
+        super(name, parent);
     }
+
+    private boolean checkIfChild(String path) {
+        String parentFolder = PathFolderManipulator.getParentFolder(path);
+        return parentFolder.equals(this.getName());
+    }
+
+    @Override
+    public String getChildren() {
+        StringBuilder children = new StringBuilder();
+        if (this.children.size() > 0) {
+            for (FileSystemObject child : this.children) {
+                children.append(child.getName()).append(" ");
+            }
+            return children.toString();
+        } else {
+            return "no children";
+        }
+    }
+
+    public void addChild(FileSystemObject child) {
+        children.add(child);
+    }
+
 }

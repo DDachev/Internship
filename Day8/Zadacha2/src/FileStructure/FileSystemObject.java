@@ -1,16 +1,23 @@
 package FileStructure;
 
 import FileStructure.Exceptions.InvalidNameException;
+import FileStructure.Utility.Validation;
 
 public class FileSystemObject {
-    String parent;
+    String parent = "root";
     String name;
-    String path;
 
-    public FileSystemObject(String name, String path) {
+
+    public FileSystemObject(String name) {
         this.name = name;
-        this.setParent(path);
-        this.path = path;
+    }
+
+    public FileSystemObject(String name, String parent) {
+        this.name = name;
+        this.parent = parent;
+    }
+    public String getChildren(){
+        return null;
     }
 
     public String getName() {
@@ -18,10 +25,10 @@ public class FileSystemObject {
     }
 
     public void setName(String name) {
-        if (validateName(name)) {
+        if (Validation.validateName(name)) {
             this.name = name;
         } else {
-            throw new InvalidNameException("Invalid name specified");
+            throw new InvalidNameException("1", "Invalid name specified");
         }
     }
 
@@ -39,32 +46,9 @@ public class FileSystemObject {
         return parent;
     }
 
-
-    private boolean validateName(String name) {
-        if (name.length() >= 1) {
-            if (name.matches("^[a-zA-Z\\d\\s()_!.&]+$")) {
-                return true;
-            }
-
-            String[] split = name.split(".");
-            if (split.length > 1) {
-                return split[split.length - 1].length() <= 6;
-            }
-
-            switch (name.charAt(0)) {
-                case '.':
-                case '_':
-                case '!':
-                case '&':
-                case ' ':
-                case '(':
-                case ')':
-                    return false;
-                default:
-                    return true;
-            }
-        } else {
-            return false;
-        }
+    @Override
+    public String toString() {
+        return "parent='" + parent + '\'' +
+                ", name='" + name + '\'';
     }
 }

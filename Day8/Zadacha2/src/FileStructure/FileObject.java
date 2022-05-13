@@ -1,7 +1,9 @@
 package FileStructure;
 
 public class FileObject extends FileSystemObject {
-    public FileObject(String name, String path) {
-        super(name, path);
+    public FileObject(String path) {
+        super(path);
+        this.name = path.substring(path.lastIndexOf("/") + 1);
+
     }
 }
