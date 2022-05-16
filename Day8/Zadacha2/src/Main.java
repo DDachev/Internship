@@ -9,6 +9,10 @@ import static FileStructure.Utility.CommandExecutor.handleInput;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
+
+
+
         List<FileSystemObject> fileSystem = new ArrayList<>();
 
         handleInput(sc, fileSystem);

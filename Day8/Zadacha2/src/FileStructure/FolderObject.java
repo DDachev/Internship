@@ -18,7 +18,29 @@ public class FolderObject extends FileSystemObject {
 
     private boolean checkIfChild(String path) {
         String parentFolder = PathFolderManipulator.getParentFolder(path);
-        return parentFolder.equals(this.getName());
+        if (parentFolder != null) {
+            return parentFolder.equals(this.getName());
+        } else {
+            return false;
+        }
+    }
+
+    public boolean checkChildExists(String childName) {
+        for (FileSystemObject child : this.children) {
+            if (child.getName().equals(childName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private FileSystemObject getChild(String childName) {
+        for (FileSystemObject child : this.children) {
+            if (child.getName().equals(childName)) {
+                return child;
+            }
+        }
+        return null;
     }
 
     @Override
@@ -26,16 +48,19 @@ public class FolderObject extends FileSystemObject {
         StringBuilder children = new StringBuilder();
         if (this.children.size() > 0) {
             for (FileSystemObject child : this.children) {
-                children.append(child.getName()).append(" ");
+                children.append(child.getName()).append(", ");
             }
             return children.toString();
         } else {
-            return "no children";
+            return this.getName() + " has no children";
         }
     }
+    public List<FileSystemObject> getChildrenList() {
+        return this.children;
+    }
 
+    @Override
     public void addChild(FileSystemObject child) {
         children.add(child);
     }
-
 }

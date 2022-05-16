@@ -1,31 +1,51 @@
 package FileStructure.Utility;
 
+import FileStructure.Exceptions.NotExistingDirectoryException;
+import FileStructure.FileSystemObject;
+import FileStructure.FolderObject;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
 public class PathFolderManipulator {
     private static String getFirstFolder(String path) {
-        String[] folders = path.trim().split("/");
-        return folders[0];
-    }
-    public static String getLastFolder(String path) {
-        int index = path.lastIndexOf('/');
-        if (index == -1) {
-            return path;
-        }
-        return path.substring(index + 1);
+        Path p = Paths.get(path);
+        return p.getName(0).toString();
     }
 
     public static String getParentFolder(String path) {
-        String[] folders = path.trim().split("/");
-        if (folders.length > 0) {
-            return path.substring(0, path.lastIndexOf('/'));
+        Path p = Paths.get(path);
+        if (p.getNameCount() == 1) {
+            return p.getFileName().toString();
+        } else if (p.getNameCount() >= 2) {
+            return p.getName(p.getNameCount() - 2).toString();
         }
-        return "";
+        return null;
     }
 
     public static String getFolderName(String path) {
-        String[] folders = path.trim().split("/");
-        if (folders.length > 0) {
-            return folders[folders.length - 1];
+        Path p = Paths.get(path);
+        return p.getFileName().toString();
+    }
+
+    public static FolderObject getParentIfExists(String path, List<FileSystemObject> fileSystem) {
+        String parent = getParentFolder(path);
+
+        for (FileSystemObject folder : fileSystem) {
+            if (folder.getName().equals(parent)) {
+                return (FolderObject) folder;
+            }
         }
-        return "";
+        return null;
+    }
+
+    public static void addChildFolder(String path, FileSystemObject child, List<FileSystemObject> fileSystem, int commandCounter) {
+        FileSystemObject parent = getParentIfExists(path, fileSystem);
+        if (parent != null) {
+            parent.addChild(child);
+        } else {
+            throw new NotExistingDirectoryException(commandCounter + " - Directory does not exist");
+        }
     }
 }

@@ -1,7 +1,7 @@
 package FileStructure.Exceptions;
 
 public class InvalidNameException extends RuntimeException {
-    public InvalidNameException(String message, String lineNumber) {
+    public InvalidNameException(String message, int lineNumber) {
         super(lineNumber + " - " + message);
     }
 }

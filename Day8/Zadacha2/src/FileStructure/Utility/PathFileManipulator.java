@@ -29,11 +29,5 @@ public class PathFileManipulator {
         return path.substring(lastSlash + 1, lastDot);
     }
 
-    public static String getPathWithoutFileName(String path) {
-        int lastSlash = path.lastIndexOf("/");
-        if (lastSlash == -1) {
-            return path;
-        }
-        return path.substring(0, lastSlash);
-    }
+
 }

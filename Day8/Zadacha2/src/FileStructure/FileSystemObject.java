@@ -3,6 +3,8 @@ package FileStructure;
 import FileStructure.Exceptions.InvalidNameException;
 import FileStructure.Utility.Validation;
 
+import java.util.List;
+
 public class FileSystemObject {
     String parent = "root";
     String name;
@@ -16,7 +18,8 @@ public class FileSystemObject {
         this.name = name;
         this.parent = parent;
     }
-    public String getChildren(){
+
+    public String getChildren() {
         return null;
     }
 
@@ -25,11 +28,7 @@ public class FileSystemObject {
     }
 
     public void setName(String name) {
-        if (Validation.validateName(name)) {
-            this.name = name;
-        } else {
-            throw new InvalidNameException("1", "Invalid name specified");
-        }
+        this.name = name;
     }
 
     public void setParent(String path) {
@@ -50,5 +49,16 @@ public class FileSystemObject {
     public String toString() {
         return "parent='" + parent + '\'' +
                 ", name='" + name + '\'';
+    }
+
+    public void addChild(FileSystemObject folder) {
+    }
+
+    public boolean checkChildExists(String targetFolder) {
+        return false;
+    }
+
+    public List<FileSystemObject> getChildrenList() {
+        return null;
     }
 }
