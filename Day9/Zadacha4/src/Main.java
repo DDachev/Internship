@@ -12,19 +12,24 @@ public class Main {
             kidsHeights.add(height);
         }
 
-        int round = 0;
+        int rounds = 0;
+        boolean removed = false;
 
-        while (kidsHeights.size() > 1) {
+        while (true) {
             for (int i = kidsHeights.size() - 1; i > 0; i--) {
                 if (kidsHeights.get(i) > kidsHeights.get(i - 1)) {
                     kidsHeights.remove(i);
+                    removed = true;
                 }
             }
-            round++;
-            if (kidsHeights.get(1) < kidsHeights.get(0)) {
+
+            if (!removed) {
                 break;
             }
+            rounds++;
+            removed = false;
         }
-        System.out.println(round);
+        System.out.println(rounds);
+
     }
 }

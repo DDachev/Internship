@@ -22,7 +22,7 @@ public class Main {
             if (Operations.isOperand(tokens[i])) {
                 StringBuilder sb = new StringBuilder();
 
-                while (i < tokens.length && Operations.isOperand(tokens[i])) {
+                while (i < tokens.length && Operations.isOperand(tokens[i]) || tokens[i] == '.') {
                     sb.append(tokens[i++]);
                 }
 
