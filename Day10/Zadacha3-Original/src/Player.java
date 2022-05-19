@@ -23,7 +23,7 @@ public class Player {
     }
 
     public void addCard(Card card) {
-        cards.add(card);
+        cards.addLast(card);
     }
 
     public Card getCard() {
@@ -31,6 +31,7 @@ public class Player {
     }
 
     public void showCards() {
+        System.out.println(this.getName() + " has " + this.getHand().size() + " cards:");
         for (Card card : this.cards) {
             System.out.println(card);
         }

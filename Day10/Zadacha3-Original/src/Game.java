@@ -9,6 +9,7 @@ public class Game {
     public static void run(Player player1, Player player2) {
 
         while (player1.getHand().size() > 0 && player2.getHand().size() > 0) {
+
             Card player1Card = player1.getCard();
             Card player2Card = player2.getCard();
             List<Card> player1WarCards = new ArrayList<>();
@@ -21,39 +22,46 @@ public class Game {
                     player1.getHand().addLast(player1Card);
                     player1.getHand().addLast(player2Card);
                     player1.getHand().removeFirst();
-                    player2.getHand().remove(player2Card);
+                    player2.getHand().removeFirst();
                     gameLog(player1.getName() + " wins the round");
                 } else if (player1Card.compareTo(player2Card) < 0) {
                     player2.getHand().addLast(player2Card);
                     player2.getHand().addLast(player1Card);
                     player2.getHand().removeFirst();
-                    player1.getHand().remove(player1Card);
+                    player1.getHand().removeFirst();
                     gameLog(player2.getName() + " wins the round");
                 }
                 if (player1Card.equals(player2Card)) {
+                    player1.getHand().removeFirst();
+                    player2.getHand().removeFirst();
                     gameLog("War!");
                     warsCount++;
                     playWar(player1, player2, player1WarCards, player2WarCards);
                 }
             }
             roundsCount++;
+            player1.showCards();
+            player2.showCards();
         }
-        System.out.println("Game over");
+        printEndText(player1, player2);
+    }
 
-        if (player1.getHand().size() == 0) {
+    public static void printEndText(Player player1, Player player2) {
+        System.out.println("Game over");
+        if (player1.getHand().size() == 0 && player2.getHand().size() == 0) {
+            gameLog("DRAW - Both players have no cards left");
+        } else if (player1.getHand().size() == 0) {
             System.out.println(player2.getName() + " WINS THE GAME!");
-        } else {
+        } else if (player2.getHand().size() == 0) {
             System.out.println(player1.getName() + " WINS THE GAME!");
         }
+
+        gameLog("The game ends in " + roundsCount + " rounds");
         System.out.println("Total number of wars: " + warsCount);
         System.out.println("Total number of war draws: " + numberOfDraws);
         System.out.println(player1.getName() + " won " + player1.getWarsWon() + " wars");
         System.out.println(player2.getName() + " won " + player2.getWarsWon() + " wars");
-        if (player1.getHand().size() > 0) {
-            gameLog(player1.getName() + " wins the game in " + roundsCount + " rounds");
-        } else {
-            gameLog(player2.getName() + " wins the game in " + roundsCount + " rounds");
-        }
+
     }
 
     private static void playWar(Player player1, Player player2, List<Card> player1WarCards, List<Card> player2WarCards) {
@@ -61,6 +69,8 @@ public class Game {
             int player1Score = 0;
             int player2Score = 0;
 
+            player1.showCards();
+            player2.showCards();
             if (player1.getHand().size() >= 3 && player2.getHand().size() >= 3) {
 
                 for (int i = 0; i < 3; i++) {
@@ -76,7 +86,7 @@ public class Game {
             } else if (player1.getHand().size() < 3 && player2.getHand().size() >= 3) {
                 gameLog(player1.getName() + " has less than 3 cards");
                 for (Card card : player1.getHand()) {
-                    player1.getHand().remove(card);
+                    player1.getHand().removeFirst();
                     player1WarCards.add(card);
                     player1Score += card.getValue();
                 }
@@ -100,22 +110,26 @@ public class Game {
                 }
             }
 
+
             if (player1Score == player2Score) {
                 numberOfDraws++;
                 gameLog("Draw! Another War!");
+                if (player1.getHand().size() == 0 && player2.getHand().size() == 0) {
+                    return;
+                }
                 playWar(player1, player2, player1WarCards, player2WarCards);
             } else {
                 getWarWinner(player1, player2, player1Score, player2Score);
                 if (player1Score > player2Score) {
                     player1WarCards.addAll(player2WarCards);
                     for (Card card : player1WarCards) {
-                        player1.getHand().addLast(card);
+                        player1.addCard(card);
                     }
                     player1WarCards.clear();
                 } else {
                     player2WarCards.addAll(player1WarCards);
                     for (Card card : player2WarCards) {
-                        player2.getHand().addLast(card);
+                        player2.addCard(card);
                     }
                     player2WarCards.clear();
                 }
