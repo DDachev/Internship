@@ -3,10 +3,10 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 public class Movie implements Serializable {
-    private String title;
-    private String director;
-    private String[] actors;
-    private int releaseDate;
+    private final String title;
+    private final String director;
+    private final String[] actors;
+    private final int releaseDate;
 
     public Movie(String title, String director, String[] actors, int releaseDate) {
         this.title = title;
@@ -15,22 +15,7 @@ public class Movie implements Serializable {
         this.releaseDate = releaseDate;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public String[] getActors() {
-        return actors;
-    }
-
-    public int getReleaseDate() {
-        return releaseDate;
-    }
-
+   @Override
     public String toString() {
         return title + " (" + releaseDate + ")";
     }
