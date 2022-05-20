@@ -6,12 +6,13 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
+        sc.nextLine();
 
         List<String> graphicFiles = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             String input = sc.nextLine();
 
-            String[] inputArr = input.split("\\.");
+            String[] inputArr = input.trim().split("\\.");
             if (inputArr.length != 2) {
                 System.out.println("Invalid input.");
             } else {
@@ -21,7 +22,7 @@ public class Main {
                 System.out.println(extension);
                 switch (extension) {
                     case "jpg", "jpeg", "png", "gif", "bmp":
-                        graphicFiles.add(name + extension);
+                        graphicFiles.add(name + " " + extension);
                         break;
                     default:
                         System.out.println();
