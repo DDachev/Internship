@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotNull;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,10 +16,8 @@ public class Blog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotNull
     private String title;
 
-    @NotNull
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
