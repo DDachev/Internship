@@ -19,9 +19,9 @@ public class Article {
 
     private String content;
 
-    @OneToOne
-    @JoinColumn(name = "image_id")
-    private long image_id;
+    //@OneToOne
+   // @JoinColumn(name = "image_id")
+    //private long image_id;
 
     @ManyToOne
     @JoinColumn(name = "blog_id")
@@ -56,7 +56,7 @@ public class Article {
         this.content = content;
     }
 
-    /*public long getImage_id() {
+   /* public long getImage_id() {
         return image_id;
     }
 
