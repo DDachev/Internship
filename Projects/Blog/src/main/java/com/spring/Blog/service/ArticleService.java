@@ -1,5 +1,7 @@
-package com.spring.Blog.Article;
+package com.spring.Blog.service;
 
+import com.spring.Blog.model.Article;
+import com.spring.Blog.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,7 +9,7 @@ import java.util.List;
 
 @Service
 public class ArticleService {
-    private final ArticleRepository articleRepository;
+    private ArticleRepository articleRepository;
 
     @Autowired
     public ArticleService(ArticleRepository articleRepository) {
