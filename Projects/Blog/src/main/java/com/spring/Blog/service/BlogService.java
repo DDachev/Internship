@@ -9,20 +9,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 import java.util.List;
-import java.util.Set;
+
 
 @Service
 public class BlogService {
     @Autowired
-    private BlogRepository blogRepository;
-
+    private final BlogRepository blogRepository;
     @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
 
     public BlogService(BlogRepository blogRepository, UserRepository userRepository) {
@@ -30,11 +25,15 @@ public class BlogService {
         this.userRepository = userRepository;
     }
 
-    public List<Blog> getBlogs() {
-        return blogRepository.findAll();
+    public ResponseEntity<List<Blog>> getBlogs() {
+        List<Blog> blogs = blogRepository.findAll();
+        return blogs.isEmpty() ? new ResponseEntity<>(HttpStatus.NOT_FOUND) : new ResponseEntity<>(blogs, HttpStatus.OK);
     }
 
-    public ResponseEntity addBlog(Blog blog, String username) {
+    public ResponseEntity<Blog> addBlog(Blog blog, String username) {
+        if (userRepository.findByUsername(username) == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         User user = userRepository.findByUsername(username);
         blog.setUser(user);
         blogRepository.save(blog);

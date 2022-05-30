@@ -19,7 +19,7 @@ public class Blog {
     private String title;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany
@@ -29,6 +29,7 @@ public class Blog {
     public Blog(String title) {
         this.title = title;
     }
+
     public long getId() {
         return id;
     }
@@ -59,5 +60,9 @@ public class Blog {
 
     public void setArticles(List<Article> articles) {
         this.articles = articles;
+    }
+
+    public void addArticle(Article article) {
+        this.articles.add(article);
     }
 }

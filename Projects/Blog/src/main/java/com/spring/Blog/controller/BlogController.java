@@ -3,6 +3,7 @@ package com.spring.Blog.controller;
 import com.spring.Blog.model.Blog;
 import com.spring.Blog.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,14 +18,13 @@ public class BlogController {
         this.blogService = blogService;
     }
 
-    @GetMapping
-    public List<Blog> getBlogs() {
+    @GetMapping(path = "blogs")
+    public ResponseEntity<List<Blog>> getBlogs() {
         return blogService.getBlogs();
     }
 
     @PostMapping(path = "{username}/blog/add")
-    public Blog addBlogToUser(@RequestBody Blog blog, @PathVariable("username") String username) {
-        blogService.addBlog(blog, username);
-        return blog;
+    public ResponseEntity<Blog> addBlogToUser(@RequestBody Blog blog, @PathVariable("username") String username) {
+        return blogService.addBlog(blog, username);
     }
 }

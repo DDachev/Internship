@@ -3,9 +3,8 @@ package com.spring.Blog.controller;
 import com.spring.Blog.model.Article;
 import com.spring.Blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +22,11 @@ public class ArticleController {
     @RequestMapping(path = "articles")
     public List<Article> getArticles() {
         return articleService.getArticles();
+    }
+
+    @PostMapping
+    @RequestMapping(path = "{username}/blogs/{blogId}/articles/add")
+    public ResponseEntity<Article> addArticle(@RequestBody Article article, @PathVariable("username") String username, @PathVariable("blogId") long blogId) {
+        return articleService.addArticle(article, username, blogId);
     }
 }

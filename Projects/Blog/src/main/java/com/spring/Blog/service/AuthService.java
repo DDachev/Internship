@@ -3,20 +3,13 @@ package com.spring.Blog.service;
 import com.spring.Blog.model.User;
 import com.spring.Blog.repository.AuthRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-import java.util.Set;
 
 @Service
 public class AuthService {
     @Autowired
-    private AuthRepository authRepository;
+    private final AuthRepository authRepository;
 
     @Autowired
     public AuthService(AuthRepository authRepository) {
