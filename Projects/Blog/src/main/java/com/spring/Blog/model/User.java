@@ -1,26 +1,42 @@
 package com.spring.Blog.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name="USER_NAME", length=100, nullable=false)
+    @NotBlank(message = "Username is required")
+    @Size(min = 3, max = 100, message = "Username must be between 3 and 100 characters")
+    @Column(name = "USER_NAME")
     private String username;
-    @Column(nullable=false)
+
+    @Email
+    @NotBlank(message = "Email is required")
+    @Size(min = 3, max = 255, message = "Email must be between 3 and 255 characters")
+    @Column(nullable = false)
     private String email;
-    @Column(length=72, nullable=false)
+    @Size(min = 3, max = 72, message = "Password must be between 3 and 72 characters")
+    @NotNull
+    @NotEmpty
+    @Column(nullable = false)
     private String password;
+
+    private boolean logged = false;
 
     @OneToMany(mappedBy = "user")
     private List<Blog> blogs = new ArrayList<>();
@@ -29,46 +45,6 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setBlogs(List<Blog> blogs) {
-        this.blogs = blogs;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public List<Blog> getBlogs() {
-        return blogs;
     }
 }
 

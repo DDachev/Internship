@@ -1,6 +1,5 @@
 package com.spring.Blog.controller;
 
-import com.spring.Blog.message.ResponseMessage;
 import com.spring.Blog.model.Image;
 import com.spring.Blog.repository.ImageRepository;
 import com.spring.Blog.service.FilesStorageService;
@@ -22,7 +21,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@CrossOrigin("http://localhost:8080")
 public class ImageController {
     @Autowired
     FilesStorageService storageService;
@@ -30,7 +28,7 @@ public class ImageController {
     private ImageRepository imageRepository;
 
     @PostMapping("/api/v1/upload")
-    public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
         String message = "";
         try {
             storageService.save(file);
@@ -38,10 +36,10 @@ public class ImageController {
             Image image = new Image(file.getOriginalFilename(), url);
             imageRepository.save(image);
             message = "Uploaded the file successfully: " + file.getOriginalFilename();
-            return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+            return ResponseEntity.status(HttpStatus.OK).body(message);
         } catch (Exception e) {
             message = "Could not upload the file: " + file.getOriginalFilename() + "!";
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
         }
     }
 

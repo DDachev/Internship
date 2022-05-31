@@ -11,12 +11,8 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "api/v1/")
 public class ArticleController {
-    private final ArticleService articleService;
-
     @Autowired
-    public ArticleController(ArticleService articleService) {
-        this.articleService = articleService;
-    }
+    private ArticleService articleService;
 
     @GetMapping
     @RequestMapping(path = "articles")

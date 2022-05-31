@@ -4,6 +4,7 @@ import com.spring.Blog.model.Blog;
 import com.spring.Blog.model.User;
 import com.spring.Blog.repository.BlogRepository;
 import com.spring.Blog.repository.UserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,17 +14,12 @@ import java.util.List;
 
 
 @Service
+@AllArgsConstructor
 public class BlogService {
     @Autowired
     private final BlogRepository blogRepository;
     @Autowired
     private final UserRepository userRepository;
-
-
-    public BlogService(BlogRepository blogRepository, UserRepository userRepository) {
-        this.blogRepository = blogRepository;
-        this.userRepository = userRepository;
-    }
 
     public ResponseEntity<List<Blog>> getBlogs() {
         List<Blog> blogs = blogRepository.findAll();
