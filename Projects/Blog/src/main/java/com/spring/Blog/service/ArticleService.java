@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+// it's not necessary to add @AllArgsConstructor when use @Autowired
 @AllArgsConstructor
 public class ArticleService {
     @Autowired
