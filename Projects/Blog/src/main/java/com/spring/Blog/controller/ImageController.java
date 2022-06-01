@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 @Controller
 public class ImageController {
     @Autowired
+    // I think that property it has to be a private
     FilesStorageService storageService;
     @Autowired
     private ImageRepository imageRepository;
@@ -71,6 +72,7 @@ public class ImageController {
     }
 
     @GetMapping(value = "/files2/{filename:.+}", produces = MediaType.IMAGE_JPEG_VALUE)
+    // it's better practise to handle exception and return your custom response. For that you can use exception handling methods with @ExceptionHandler annotation.
     public ResponseEntity<byte[]> fromClasspathAsResEntity(@PathVariable String filename) throws IOException {
 
         ClassPathResource imageFile = new ClassPathResource("static/images/" + filename);
