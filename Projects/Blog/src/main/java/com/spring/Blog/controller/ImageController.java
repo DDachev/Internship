@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 @Controller
 public class ImageController {
     @Autowired
+    // it's better practise to autowired interface of service, in your case FileStorageServiceImpl
     FilesStorageService storageService;
     @Autowired
     private ImageRepository imageRepository;
