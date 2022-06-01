@@ -14,6 +14,7 @@ public class AuthController {
     @Autowired
     private final AuthService authService;
 
+    // it's not necessary to add constructor when use @Autowired
     public AuthController(AuthService authService) {
         this.authService = authService;
     }
