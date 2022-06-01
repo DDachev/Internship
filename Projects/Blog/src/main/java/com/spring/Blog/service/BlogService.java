@@ -21,6 +21,8 @@ public class BlogService {
     @Autowired
     private final UserRepository userRepository;
 
+    // it's better practise the methods which are invoked in controllers to return only object, in our case List<BLog>
+    // but in controller itself to create and return ResponseEntity<>
     public ResponseEntity<List<Blog>> getBlogs() {
         List<Blog> blogs = blogRepository.findAll();
         return blogs.isEmpty() ? new ResponseEntity<>(HttpStatus.NOT_FOUND) : new ResponseEntity<>(blogs, HttpStatus.OK);
